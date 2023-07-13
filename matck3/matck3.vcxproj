@@ -132,7 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
-    <ClCompile Include="FeamControl.h" />
+    <ClCompile Include="FreamControl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameClearScene.h" />
@@ -140,6 +140,8 @@
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="InputControl.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
