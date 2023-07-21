@@ -19,7 +19,7 @@
 
 
 
-int Stagenitialize(void);
+int StageInitialize(void);
 void CreateBolck(void);
 void SelectBlock(void);
 void StageDraw(void);
