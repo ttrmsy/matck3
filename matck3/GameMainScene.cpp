@@ -8,7 +8,7 @@
 /************************
 *マクロ定義
 *************************/
-#define TIMELIMIT　　　(3600 * 3) //制限時間
+#define TIMELIMIT        (3600 * 3) //制限時間
 #define NUMBER_IMAGE_MAX (10)     //数字画像数
 
 
@@ -84,13 +84,57 @@ int GameMainScene_Initialze(void)
 	}
 	else
 	{
-		GameLevel++;
-		Set_StageMission(3);
+		GameLevel++;         //ゲームレベルの更新
+		Set_StageMission(3); //ミッションを増やす
 	}
-	GameTime = TIMELIMIT;
+	GameTime = TIMELIMIT;    //制限時間の初期化
 
 
 
 	return ret;
 
 }
+
+
+/***********************
+*ゲームメイン画面：更新処理
+* 引数：なし
+* 戻り値：なし
+************************/
+
+void GameMainScene_Update(void)
+
+{
+	switch (Get_StageState())
+	{
+	case 0:
+
+			SelectBlock();
+			break;
+
+	case 2:
+			MoveBlock();
+			break;
+
+	case 3:
+
+			CheckBlock();
+			break;
+
+	case 4:
+			CheckBlock();
+			break;
+
+
+	}
+	//制限時間の更新
+	GameTime--;
+
+
+	//制限時間がなくなったら、ゲームオバーに遷移する
+	if (GameTime < 0)
+	{
+		Change_Scene(E_GAME_OVER);
+	}
+}
+
