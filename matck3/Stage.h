@@ -30,7 +30,7 @@ void CheckClear(void);
 
 
 int Get_StageState(void);
-int Get_SrageClearFlag(void);
+int Get_StageClearFlag(void);
 int Get_StageScore(void);
 
 
