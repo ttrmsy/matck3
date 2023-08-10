@@ -16,6 +16,6 @@
 *プロトタイプ宣言
 ********************************/
 
-int TitlScene_Initialize(void);
-void TitlScene_Update(void); 
-void TitlScene_Draw(void);
+int TitleScene_Initialize(void);
+void TitleScene_Update(void); 
+void TitleScene_Draw(void);

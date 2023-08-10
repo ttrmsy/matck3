@@ -40,6 +40,49 @@ int GameOverScene_Initialize(void)
 		ret = -1;
 
 	}
-	if
+	if (GameOverSE == -1)
+	{
+		ret = -1;
+	}
 
+	return ret;
+     
+}
+
+/***********************
+*ゲームメイン画面：更新処理
+* 引　数：なし
+* 戻り値：なし
+************************/
+
+void GameOverScene_Update(void)
+{
+
+	if (CheckSoundMem(GameOverSE) == 0)
+	{
+		if (GameOverFlag == TRUE)
+		{
+			Change_Scene(E_GAME_OVER);
+
+		}
+		else
+		{
+		PlaySoundMem(GameOverSE, DX_PLAYTYPE_BACK);
+		GameOverFlag = TRUE;
+
+	    }
+	}
+
+}
+
+/***********************
+*ゲームメイン画面：描画処理
+* 引　数：なし
+* 戻り値：なし
+************************/
+
+void GameOverScene_Draw(void)
+{
+	//ゲームオーバー画像表示
+	DrawGraph(0, 0, GameOverImage, FALSE);
 }

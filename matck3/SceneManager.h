@@ -24,7 +24,7 @@ enum GAME_MODE
 *プロトタイプ宣言
 *******************************/
 int SceneManager_Initialize(GAME_MODE mode);   //初期化処理
-void SceneManager_Upedate(void);               //更新処理
+void SceneManager_Update(void);               //更新処理
 void SceneManager_Draw(void);                  //描画処理
 
 
