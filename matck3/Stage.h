@@ -20,7 +20,7 @@
 
 
 int StageInitialize(void);
-void CreateBolck(void);
+void CreateBlock(void);
 void SelectBlock(void);
 void StageDraw(void);
 void FadeOutBlock(void);
