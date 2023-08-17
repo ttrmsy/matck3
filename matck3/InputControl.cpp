@@ -22,8 +22,7 @@ int mouse_position_y;
 * 引　数：なし
 * 戻り値：なし
 ************************/
-
-void Input_intialize(void)
+void Input_Initialize(void)
 {
 	old_button = NULL;
 	now_button = NULL;

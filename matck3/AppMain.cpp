@@ -85,7 +85,7 @@ int WINAPI WinMain(_In_ HINSTANCE hinstance, _In_opt_ HINSTANCE hPrevInatance, _
 
 
 		//シーンマネージャー更新処理
-		SceneManager_Upedate();
+		SceneManager_Update();
 
 
 		//画面クリア
