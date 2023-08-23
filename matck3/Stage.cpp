@@ -594,7 +594,7 @@ void SelectBlock(void)
 	* ñﬂÇËílÅFÇ»Çµ
 	************************/
 
-	void Set_StageMisson(int mission)
+	void Set_StageMission(int mission)
 	{
 
 		Stage_Mission += mission;

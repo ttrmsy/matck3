@@ -38,7 +38,7 @@ int GameClearFlag;
 
 
 
-int GameClaerScene_Initialize(void)
+ int GameClearScene_Initialize(void)
 {
 	int ret = 0;
 
@@ -73,8 +73,9 @@ int GameClaerScene_Initialize(void)
 * 戻り値：なし
 ************************/
 
-void FameClearSene_Update(void)
-{
+ void GameMainScene_Update(void)
+ {
+	 
 	//ゲームクリア効果音再生チェック
 	if (CheckSoundMem(GameClearSE) == 0)
 	{

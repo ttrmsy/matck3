@@ -16,11 +16,11 @@
 *プロトタイプ宣言
 ********************************/
 void Input_Initialize(void);
-void Input_Upedate(void);
+void Input_Update(void);
 int Input_Escape(void);
 
-int GetOldkey(int key);
-int GetNNowkey(int key);
+int GetOldKey(int key);
+int GetNNowKey(int key);
 int GetKeyFlg(int key);
 int GetMousePositionX(void);
 int GetMousePositionY(void);

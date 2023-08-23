@@ -58,7 +58,7 @@ void Input_Update(void)
 * 戻り値：TRUE(入力された),FALSE(未入力)
 ************************/
 
-int Input_Escpe(void)
+int Input_Escape(void)
 {
 	int ret = FALSE;
 
@@ -98,7 +98,7 @@ int GetOldKey(int key)
 * 戻り値：TRUE(入力された),FALSE(未入力)
 ************************/
 
-int GetNowKey(int key)
+int GetNNowKey(int key)
 {
 	int ret = FALSE;
 
@@ -118,7 +118,7 @@ int GetNowKey(int key)
 * 戻り値：TRUE(入力された),FALSE(未入力)
 ************************/
 
-int GetKeyFlag(int key)
+int GetKeyFlg(int key)
 {
 	int ret = FALSE;
 	int keyflg = now_button & ~old_button;
@@ -153,7 +153,7 @@ int GetMousePositionX(void)
 * 戻り値：マウスカーソルのY座標情報
 ************************/
 
-int GetMousePosition_Y(void)
+int GetMousePositionY(void)
 {
 	return mouse_position_y;
 

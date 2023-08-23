@@ -47,7 +47,7 @@ int NumberImage[NUMBER_IMAGE_MAX];   //数字用画像
 * 戻り値：エラー情報
 ************************/
 
-int GameMainScene_Initialze(void)
+int GameMainScene_Initialize(void)
 {
 	int ret = 0;
 	int i;
@@ -154,7 +154,7 @@ void GameMainScene_Update(void)
 * 戻り値：なし
 ************************/
 
-void FameMainScene_Draw(void)
+void GameMainScene_Draw(void)
 {
 	int PosX = 600;
 	int tmp_level = GameLevel;
