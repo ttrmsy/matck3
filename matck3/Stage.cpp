@@ -93,9 +93,9 @@ int StageInitialize(void)
 	int i;
 
 	//âÊëúì«Ç›çûÇ›
-	LoadDivGraph("images/block.pug", BLOCK_IMAGE_MAX, BLOCK_IMAGE_MAX, 1,
+	LoadDivGraph("images/block.png", BLOCK_IMAGE_MAX, BLOCK_IMAGE_MAX, 1,
 		BLOCKSIZE, BLOCKSIZE, BlockImage);
-	StageImage = LoadGraph("images/stage.pug");
+	StageImage = LoadGraph("images/stage.png");
 
 	//âπåπì«Ç›çûÇ›
 	ClickSE = LoadSoundMem("sounds/click_se.mp3");
@@ -132,7 +132,7 @@ int StageInitialize(void)
 		}
 	}
 
-	if (StageImage == -1)
+	////if (StageImage == -1)
 	{
 		ret = -1;
 
@@ -183,7 +183,8 @@ void StageDraw(void) {
 		{
 			if (Block[i][j].flg == TRUE && Block[i][j].image != NULL)
 			{
-				DrawGraph(Block[i][j].x, Block[i][j].y, BlockImage[Block[i][j].image], TRUE);
+				DrawGraph(Block[i][j].x, Block[i][j].y,
+	BlockImage[Block[i][j].image], TRUE);
 			}
 
 		}
@@ -225,7 +226,7 @@ void CreateBlock(void)
 		Check = 0;
 		for (i = 0; i < HEIGHT; i++)
 		{
-			for (i = 0; i < WIDTH; j++)
+			for (j = 0; j < WIDTH; j++)
 			{
 				if (j == 0 || j == WIDTH - 1 || i == HEIGHT - 1 || i == 0)
 				{

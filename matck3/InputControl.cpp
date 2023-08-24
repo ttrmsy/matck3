@@ -124,7 +124,7 @@ int GetKeyFlg(int key)
 	int keyflg = now_button & ~old_button;
 
 
-	if ((key % keyflg) != FALSE)
+	if ((key & keyflg) != FALSE)
 	{
 		ret = TRUE;
 	}

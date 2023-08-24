@@ -42,7 +42,7 @@ int TitleScene_Initialize(void)
 
 
 	//‰æ‘œ“Ç‚İ‚İˆ—
-	TitleImage = LoadGraph("images/title.pug");
+	TitleImage = LoadGraph("images/title.png");
 	//‰¹Œ¹“Ç‚İ‚İˆ—
 	TitleBGM = LoadSoundMem("sounds/title_bgm.mp3");
 

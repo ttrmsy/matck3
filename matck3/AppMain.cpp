@@ -37,7 +37,7 @@
 *プログラムの開始
 ************************/
 
-int WINAPI WinMain(_In_ HINSTANCE hinstance, _In_opt_ HINSTANCE hPrevInatance, _In_
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_
 	LPSTR lpCmdLine, _In_ int nShowCmd)
 {
 	//ウィンドウタイトル設定
@@ -81,7 +81,7 @@ int WINAPI WinMain(_In_ HINSTANCE hinstance, _In_opt_ HINSTANCE hPrevInatance, _
 	while (ProcessMessage()!= D_ERROR && Input_Escape() == FALSE)
 	{
 		//入力制御機能更新処理
-		Input_Upedate();
+		Input_Update();
 
 
 		//シーンマネージャー更新処理

@@ -43,7 +43,7 @@ int GameClearFlag;
 	int ret = 0;
 
 	//画像の読み込み
-	GameClearImage = LoadGraph("images/gameclaer.pug");
+	GameClearImage = LoadGraph("images/gameclear.png");
 	//音源の読み込み
 	GameClearSE = LoadSoundMem("sounds/gameclear_se.mp3");
 
@@ -73,7 +73,7 @@ int GameClearFlag;
 * 戻り値：なし
 ************************/
 
- void GameMainScene_Update(void)
+ void GameClearScene_Update(void)
  {
 	 
 	//ゲームクリア効果音再生チェック

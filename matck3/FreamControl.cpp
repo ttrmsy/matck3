@@ -31,21 +31,21 @@ int LastTime;
 ************************/
 
 
-
-
 /***********************
 *フレーム制御機能：初期化処理
 * 引　数：なし
 * 戻り値：なし
 ************************/
 
-void FreamControl_Update(void)
+void FreamControl_Initialize(void)
 {
-	FreamTime = ((int)100.0f / FREAM_RATE);
+
+	FreamTime = ((int)1000.0f / FREAM_RATE);
 	NowTime = 0;
 	Wait = 0;
 	LastTime = 0;
 }
+
 
 
 /***********************
@@ -54,7 +54,7 @@ void FreamControl_Update(void)
 * 戻り値：なし
 ************************/
 
-void FreamControl_Initialize(void)
+void FreamControl_Update(void)
 {
 	NowTime = GetNowCount();
 	Wait = FreamTime - (NowTime - LastTime);

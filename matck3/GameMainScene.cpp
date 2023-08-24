@@ -54,7 +54,7 @@ int GameMainScene_Initialize(void)
 
 
 	//‰æ‘œ“Ç‚İ‚İ
-	LoadDivGraph("images/number.pug", NUMBER_IMAGE_MAX,
+	LoadDivGraph("images/number.png", NUMBER_IMAGE_MAX,
 		NUMBER_IMAGE_MAX, 1, 60, 120, NumberImage);
 
 
