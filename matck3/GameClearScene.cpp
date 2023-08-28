@@ -51,13 +51,13 @@ int GameClearFlag;
 	GameClearFlag = 0;
 
 	//エラーチェック
-	if (GameClearImage == -1)
+	if (GameClearImage == D_ERROR)
 	{
-		ret = -1;
+		ret = D_ERROR;
 	}
-	if (GameClearSE == -1)
+	if (GameClearSE == D_ERROR)
 	{
-		ret = -1;
+		ret = D_ERROR;
 	}
 
 
