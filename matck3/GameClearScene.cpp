@@ -89,7 +89,7 @@ int GameClearFlag;
 			GameClearFlag = TRUE;
 		}
 	}
-}
+ }
 
 
 /***********************

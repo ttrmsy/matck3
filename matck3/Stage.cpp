@@ -132,7 +132,7 @@ int StageInitialize(void)
 		}
 	}
 
-	////if (StageImage == -1)
+	if (StageImage == -1)
 	{
 		ret = -1;
 
@@ -183,15 +183,14 @@ void StageDraw(void) {
 		{
 			if (Block[i][j].flg == TRUE && Block[i][j].image != NULL)
 			{
-				DrawGraph(Block[i][j].x, Block[i][j].y,
-	BlockImage[Block[i][j].image], TRUE);
+				DrawGraph(Block[i][j].x, Block[i][j].y,BlockImage[Block[i][j].image], TRUE);
 			}
 
 		}
 	}
 
 
-	//選択ブロック描画
+	//選択ブロックxを描画
 	DrawGraph(Select[SELECT_CURSOR].x * BLOCKSIZE, Select[SELECT_CURSOR].y *
 		BLOCKSIZE, BlockImage[9], TRUE);
 	if(ClickStatus!=E_NONE)
@@ -235,7 +234,7 @@ void CreateBlock(void)
 				}
 				else
 				{
-					Block[i][j].flg = FALSE;
+					Block[i][j].flg = TRUE;
 					Block[i][j].x = (j - 1) * BLOCKSIZE;
 					Block[i][j].y = (i - 1) * BLOCKSIZE;
 					Block[i][j].width = BLOCKSIZE;
@@ -245,16 +244,6 @@ void CreateBlock(void)
 			}
 		}
 
-		/*for (i = 1 < HEIGHT - 1; i++)
-		{
-			for (j = 1 < WIDTH - 1; j++)
-			{
-				if (Block[i][j].image == NULL)
-				{
-					Block[i][j].image = GetRand(7) + 1;
-				}
-			}
-		}*/
 
 		//ブロック連鎖チェック
 		for (i = 1; i < HEIGHT - 1; i++)
@@ -300,9 +289,9 @@ void SelectBlock(void)
 	{
 		Select[SELECT_CURSOR].x = WIDTH - 3;
 	}
-	if (Select[SELECT_CURSOR].y< 0)
+	if (Select[SELECT_CURSOR].y < 0)
 	{
-		Select[SELECT_CURSOR]. y = 0;
+		Select[SELECT_CURSOR].y = 0;
 	}
 	if (Select[SELECT_CURSOR].y > HEIGHT - 3)
 	{
@@ -344,49 +333,49 @@ void SelectBlock(void)
 
 
 
-		//選択ブロックを交換する。
-		if (ClickStatus == E_SECOND)
+	//選択ブロックを交換する。
+	if (ClickStatus == E_SECOND)
+	{
+		TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
+		Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image =
+			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
+		Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image =
+			TmpBlock;
+
+		//連鎖が３つ以上か調べる。
+		Result = 0;
+		Result += combo_check(Select[NEXT_CURSOR].y + 1,
+			Select[NEXT_CURSOR].x + 1);
+		Result += combo_check(Select[TMP_CURSOR].y + 1,
+			Select[TMP_CURSOR].x + 1);
+
+
+		//連鎖が３つ未満なら選択ブロックを元に戻す
+		if (Result == 0)
 		{
-			TmpBlock = Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image;
-			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x + 1].image =
-				Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image =
-				TmpBlock;
-
-			//連鎖が３つ以上か調べる。
-			Result = 0;
-			Result += combo_check(Select[NEXT_CURSOR].y + 1,
-				Select[NEXT_CURSOR].x + 1);
-			Result += combo_check(Select[TMP_CURSOR].y + 1,
-				Select[TMP_CURSOR].x + 1);
 
 
-			//連鎖が３つ未満なら選択ブロックを元に戻す
-			if (Result == 0)
-			{
-
-
-				int TmpBlock = Block[Select[NEXT_CURSOR].y +
-					1][Select[NEXT_CURSOR].x + 1].image;
-
-				Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
-					1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
-				Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x +
-					1].image = TmpBlock;
-			}
-			else
-			{
-
-
-				//連鎖が３つ以上ならブロックを消しブロック移動処理へ移行する
-				Stage_State = 1;
-			}
-
-
-			//次にクリックできるようにClockFlagを0にする
-			ClickStatus = E_NONE;
+			int TmpBlock = Block[Select[NEXT_CURSOR].y +
+				1][Select[NEXT_CURSOR].x + 1].image;
+			Block[Select[NEXT_CURSOR].y + 1][Select[NEXT_CURSOR].x +
+				1].image = Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x + 1].image;
+			Block[Select[TMP_CURSOR].y + 1][Select[TMP_CURSOR].x +
+				1].image = TmpBlock;
 		}
+		else
+		{
+
+
+			//連鎖が３つ以上ならブロックを消しブロック移動処理へ移行する
+			Stage_State = 1;
+		}
+
+
+		//次にクリックできるようにClockFlagを0にする
+		ClickStatus = E_NONE;
 	}
+}
+
 
 
 
@@ -467,15 +456,32 @@ void SelectBlock(void)
 					for (k = i; k > 0; k--)
 					{
 						Block[k][j].image = Block[k - 1][j].image;
-						Block[k - 1][j]. image = 0;
+						Block[k - 1][j].image = 0;
 					}
 				}
 			}
+
+			//空のブロックを生成する処理
+			for (i = 1; i < HEIGHT - 1; i++)
+			{
+
+				for (j = 1; j < WIDTH - 1; j++)
+				{
+
+					if (Block[i][j].image == 0)
+					{
+
+						Block[i][j].image == GetRand(7) + 1;
+					}
+				}
+			}
+
+
+
+			//連鎖チェックへ移行する
+			Stage_State = 3;
+
 		}
-
-		//連鎖チェックへ移行する
-		Stage_State = 3;
-
 	}
 
 	/***********************
